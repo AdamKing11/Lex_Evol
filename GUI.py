@@ -16,7 +16,7 @@ except:
 
 try:
 	import tkinter as tk
-	from tkinter import HORIZONTAL, END, IntVar
+	from tkinter import HORIZONTAL, END
 except:
 	print('please install `tkinter`')
 	sys.exit()
@@ -57,7 +57,7 @@ class EvolGUI():
 		button_frame = tk.Frame(self.root)
 		button_frame.grid(row=0, column=1)
 
-		self.evolution_steps = IntVar(0)
+		self.evolution_steps = tk.IntVar(0)
 		tk.Label(button_frame, text = 'evolution steps:').grid(row=0, column=0)
 		tk.Label(button_frame, textvariable = self.evolution_steps).grid(row=0, column=1)
 

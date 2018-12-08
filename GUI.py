@@ -61,7 +61,7 @@ class EvolGUI():
 		tk.Button(button_frame,text="20 Steps",command=lambda : self.step(20)).grid(row=0, column=1)
 		tk.Button(button_frame,text="Reset Lexicon",command=self.reset_lex).grid(row=1, column=0)
 		tk.Button(button_frame,text="Quit",command=sys.exit).grid(row=1, column=1)
-
+		
 		# prepare the line graph
 		self.plot_1 = self.fig.subplots()
 

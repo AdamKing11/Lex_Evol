@@ -16,8 +16,7 @@ except:
 
 try:
 	import tkinter as tk
-	from tkinter import HORIZONTAL, END
-	from tkinter.ttk import Progressbar
+	from tkinter import HORIZONTAL, END, IntVar
 except:
 	print('please install `tkinter`')
 	sys.exit()
@@ -34,7 +33,7 @@ _colors = ['blue', 'orange', 'green', 'purple', 'black', 'yellow']
 class EvolGUI():
 	def __init__(self, lexicon):
 		self.lexicon = lexicon
-		
+
 		self.root = tk.Tk()
 		self.root.title("Bear down")
 
@@ -54,14 +53,43 @@ class EvolGUI():
 		self.canvas4 = FigureCanvasTkAgg(self.fig4, master=self.root)
 		self.canvas4.get_tk_widget().grid(row=1, column=2)
 
-		# prepare the buttons
+		
 		button_frame = tk.Frame(self.root)
 		button_frame.grid(row=0, column=1)
-		tk.Button(button_frame,text="One Step",command=self.step).grid(row=0, column=0)
-		tk.Button(button_frame,text="20 Steps",command=lambda : self.step(20)).grid(row=0, column=1)
-		tk.Button(button_frame,text="Reset Lexicon",command=self.reset_lex).grid(row=1, column=0)
-		tk.Button(button_frame,text="Quit",command=sys.exit).grid(row=1, column=1)
+
+		self.evolution_steps = IntVar(0)
+		tk.Label(button_frame, text = 'evolution steps:').grid(row=0, column=0)
+		tk.Label(button_frame, textvariable = self.evolution_steps).grid(row=0, column=1)
+
+		tk.Label(button_frame, text = 'lexicon size').grid(row=1, column=0)
+		tk.Label(button_frame, text = 'n. symbols').grid(row=1, column=1)
+		self.last_lexicon_size = 1000
+		self.last_n_symbols = 5
+		self.lexicon_size_text = tk.Entry(button_frame, width = 6)
+		self.lexicon_size_text.grid(row=2, column=0)		
+		self.lexicon_size_text.insert(0, str(self.last_lexicon_size))
+		self.n_symbols_text = tk.Entry(button_frame, width = 4)
+		self.n_symbols_text.grid(row=2, column=1)		
+		self.n_symbols_text.insert(0, str(self.last_n_symbols))
+
+		# prepare the buttons
+		tk.Button(button_frame,text="One Step",command=self.step).grid(row=3, column=0)
+		tk.Button(button_frame,text="20 Steps",command=lambda : self.step(20)).grid(row=3, column=1)
+		tk.Button(button_frame,text="Reset Lexicon",command=self.reset_lex).grid(row=4, column=0)
+		tk.Button(button_frame,text="Quit",command=sys.exit).grid(row=4, column=1)
+
+		slider_frame = tk.Frame(self.root)
+		slider_frame.grid(row=1, column=1)
+		self.merger_p_slider = tk.Scale(slider_frame, from_=0, to=100, orient = HORIZONTAL, label = 'merger prob.')
+		self.merger_p_slider.grid(row=0, column=0)
+		self.merger_p_slider.set(50)
 		
+		tk.Label(slider_frame, text = 'phone. dist. E').grid(row=1, column=0)
+		self.last_symbol_E = 1.
+		self.symbol_E_text = tk.Entry(slider_frame, width = 4)
+		self.symbol_E_text.grid(row=2, column=0)		
+		self.symbol_E_text.insert(0, str(self.last_symbol_E))
+
 		# prepare the line graph
 		self.plot_1 = self.fig.subplots()
 
@@ -160,6 +188,7 @@ class EvolGUI():
 		self.canvas3.draw()
 
 		ks, ps =  p_dist_to_lists(self.lexicon.seg_ps, sort_by_keys = True)
+		self.plot_4[0].cla()
 		self.phoneme_dist_bars = self.plot_4[0].bar(np.arange(len(ks)), ps, color = _colors[-3])
 		self.plot_4[0].set_ylim(0,.75 if max(ps) < .75 else 1)
 		self.plot_4[0].set_xticks(np.arange(len(ks)))
@@ -180,14 +209,43 @@ class EvolGUI():
 	
 	def step(self, n_steps = 1):
 		for i in range(n_steps):
-			self.lexicon.change_segs()
+			self.lexicon.change_segs(symbol_E = self.symbol_E(), merger_p = self.merger_p())
 			print('step {0} - {1}'.format(i + 1, self.lexicon.entropy))
 			if i % 4 == 0:
-				self.update()					
+				self.update()
+			self.evolution_steps.set(self.evolution_steps.get() + 1)				
 		self.update()
 		
 	def reset_lex(self):
-		self.lexicon = Lexicon(len(self.lexicon), phones = self.lexicon.phones, 
+		self.evolution_steps.set(0)
+		self.lexicon = Lexicon(self.lexicon_size(), phones = self.n_symbols(), 
 			frequency_groups = self.lexicon.frequency_groups,
 			hard_max_length = self.lexicon.hard_max_length, hard_start_length = self.lexicon.hard_start_length) 
 		self.update()
+
+	def merger_p(self):
+		return self.merger_p_slider.get() / 100
+
+	def symbol_E(self):
+		try:
+			symbol_E = float(self.symbol_E_text.get())
+		except:
+			symbol_E = self.last_symbol_E
+		self.last_symbol_E = symbol_E
+		return symbol_E
+
+	def lexicon_size(self):
+		try:
+			lexicon_size = int(self.lexicon_size_text.get())
+		except:
+			symbol_E = self.last_lexicon_size
+		self.last_lexicon_size = lexicon_size
+		return lexicon_size
+
+	def n_symbols(self):
+		try:
+			n_symbols = int(self.n_symbols_text.get())
+		except:
+			n_symbols = self.last_n_symbols
+		self.last_n_symbols = n_symbols
+		return n_symbols

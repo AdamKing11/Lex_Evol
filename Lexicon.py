@@ -258,13 +258,8 @@ class Lexicon:
 	def change_segs(self, word_E = 1.5, seg_E = 1.5, symbol_E = 1., merger_p = .5):
 		
 		# where I get creative, a million ways to do this 
-		infos = []
-		for w in self.words:
-			infos.append(w.unigram)
-			#for i, h in enumerate(w.si):
-			#	# seg info, word object, position in word
-			#	infos.append(h)
-
+		infos = [w.unigram for w in self.words]
+		
 		unique_forms = set([w.word for w in self.words])
 		# determine the max h**2 for the whole lexicon, the most information segment
 		max_h2 = max([h ** word_E for h in infos])
@@ -295,12 +290,8 @@ class Lexicon:
 				random.shuffle(seg_pos_and_h)
 				for j, h in seg_pos_and_h:
 					R = np.random.rand()
-					#try:
 					alter_seg = R > max(min(.99, (h ** seg_E) / max_si2),.05) 
-					#except:
-					#	print(i, word, word.unigram)
-					#	print('\t', h, seg_E, h ** seg_E, max_si2)
-					#	sys.exit()
+					
 					if alter_seg:
 						merger = np.random.rand() < merger_p
 						if merger:
@@ -344,55 +335,3 @@ class Lexicon:
 
 		self.seg_ps = dict_to_p_dist(self.symbol_counts, E = symbol_E)
 		self.calc_segmental_info()
-		
-		#for w in sorted(self.words, key = lambda w : w.unigram):
-		#	print(w, w.unigram)
-		print(self.seg_ps)
-		
-"""
-def delete_segs(self):
-		# where I get creative, a million ways to do this 
-		infos = []
-		for w in self.words:
-			for i, h in enumerate(w.si):
-				# seg info, word object, position in word
-				infos.append((h, w, i))
-
-		unique_forms = set([w.word for w in self.words])
-		# determine the max h**2 for the whole lexicon, the most information segment
-		max_h2 = max([h + w.unigram for h, w, _ in infos])
-
-		n_removed = 0
-		for i, (h, word, j) in enumerate(sorted(infos, key = lambda x : x[0])):
-			# pick random number, N, between 0-1
-			# if N is greater than h**2 / max_h2, remove
-			remove = np.random.rand() > ((h + word.unigram)) / max_h2
-			
-			### bonus
-			# only remove 1/5 of segments that pass above
-			remove = remove and np.random.rand() >= .8
-			if remove and len(word) > 1:
-				# remove the old word from the count of cohorts
-				self.delete_word_from_cohorts(word)
-				n_removed += 1
-				# remove the naughty, likely low info symbol
-				unique_forms.remove(word.word)
-				word.remove_char(j)
-				
-				# if the new word is something already in the lexicon
-				if word.word in unique_forms:
-					short_enough_words = [w for w in self.words if self.hard_max_length >= len(w) + len(word)]
-					# add a prefix, built of another random word
-					if len(short_enough_words) > 1:
-						prefix = random.choice(short_enough_words).word
-					else:
-						prefix_len = 1#np.random.randint(0, self.hard_max_length - len(word))
-						prefix = ''.join(np.random.choice(list(self.phones.keys()), prefix_len, replace = True))
-
-					word.add_prefix(prefix)
-				unique_forms.add(word.word)
-				# add the new word to the cohort counts
-				self.add_word_to_cohorts(word)
-
-		self.calc_segmental_info()
-"""

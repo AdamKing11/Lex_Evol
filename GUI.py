@@ -120,10 +120,15 @@ class EvolGUI():
 
 		max_si = 0
 		self.avg_si_lines = []
+		if self.lexicon.frequency_groups == 2:
+			line_labels = ['high frequency', 'low frequency']
+		else:
+			line_labels = ['group {0}'.format(i + 1) for i in range(self.lexicon.frequency_groups)]
+		
 		for i in range(self.lexicon.frequency_groups):
 			x = np.arange(self.lexicon.hard_max_length) + 1
 			avg_si = lexicon.avg_segmental_info(which_group = i + 1)
-			new_line, = self.plot_1.plot(x, avg_si, color = _colors[i], label='group {0}'.format(i + 1))
+			new_line, = self.plot_1.plot(x, avg_si, color = _colors[i], label=line_labels[i])
 			self.avg_si_lines.append(new_line)
 			max_si = max(max_si, max(avg_si))
 
@@ -174,7 +179,10 @@ class EvolGUI():
 			self.edge_ent_bars.append(new_bar)
 		
 		self.plot_4[1].set_xticks(.25 + np.arange(self.lexicon.frequency_groups) * 1.5)
-		self.plot_4[1].set_xticklabels(['group {0}'.format(i + 1) for i in range(self.lexicon.frequency_groups)])
+		if self.lexicon.frequency_groups == 2:
+			self.plot_4[1].set_xticklabels(['high frequency', 'low frequency'])
+		else:
+			self.plot_4[1].set_xticklabels(['group {0}'.format(i + 1) for i in range(self.lexicon.frequency_groups)])
 		self.plot_4[1].set_title('seg. entropy - first/last segment')		
 		self.plot_4[1].legend(labels = ['first', 'last'])
 
@@ -226,7 +234,10 @@ class EvolGUI():
 				edge_ent, color = _colors[-2+i], width = .5)
 			self.edge_ent_bars.append(new_bar)
 		self.plot_4[1].set_xticks(.25 + np.arange(self.lexicon.frequency_groups) * 1.5)
-		self.plot_4[1].set_xticklabels(['group {0}'.format(i + 1) for i in range(self.lexicon.frequency_groups)])
+		if self.lexicon.frequency_groups == 2:
+			self.plot_4[1].set_xticklabels(['high frequency', 'low frequency'])
+		else:
+			self.plot_4[1].set_xticklabels(['group {0}'.format(i + 1) for i in range(self.lexicon.frequency_groups)])
 		self.plot_4[1].set_title('avg. information - first/last segment')
 		self.plot_4[1].legend(labels = ['first', 'last'])
 		self.canvas4.draw()
@@ -234,7 +245,7 @@ class EvolGUI():
 	def step(self, n_steps = 1):
 		for i in range(n_steps):
 			self.lexicon.change_segs(word_E = self.word_E(), symbol_E = self.symbol_E(), merger_p = self.merger_p())
-			print('step {0} - {1}'.format(i + 1, self.lexicon.entropy))
+			print('step {0} - lexicon entropy: {1}'.format(i + 1, self.lexicon.entropy))
 			if i % 4 == 0:
 				self.update()
 			self.evolution_steps.set(self.evolution_steps.get() + 1)				

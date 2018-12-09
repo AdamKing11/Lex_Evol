@@ -1,6 +1,5 @@
 import string, random, sys
 
-from pprint import pprint
 from utils import *
 try:
 	import numpy as np
@@ -56,17 +55,26 @@ class Lexicon:
 	# lexicon object, contains all words and methods for calculating seginfo and removing segments
 	def __init__(self, N, phones = 6, z = 2., hard_start_length = None, hard_max_length = 12, frequency_groups = 1):
 		
-		self.zipf_constant = z
+
 		self.hard_start_length = hard_start_length
 		self.hard_max_length = hard_max_length
 		self.frequency_groups = frequency_groups
+		
+
 		self.phones = phones
 		# generate a zipfian dist for word frequencies
+		# a constant used in generating Zipfian dist. 
+		# z must be greater than 1
+		self.zipf_constant = z
+		
 		self.frequencies = self.sample_zipf(N)
 		self.total_frequency = np.sum(self.frequencies)
 		# determine unigram word prob
 		p = self.frequencies / np.sum(self.frequencies)
 		
+		# based off the passed requirement on length, generate word lengths for probability values
+		# note: is passed a numpy vector of probabilities, will return a vector of lengths
+		# either uses the hard
 		self.lengths = self.word_p_to_length(p)
 
 		# build words
@@ -83,13 +91,20 @@ class Lexicon:
 		phone_seq = ''
 		for freq, l in zip(self.frequencies, self.lengths):
 			# generate strings until we get one that isn't already in the lexicon
+			# if we've tried too many candidate forms, increase length
+			tried_candidates = 0
+			length_boost = 0
 			while phone_seq in unique_forms:
+				tried_candidates += 1
 				# make word as string of random symbols, determined by the symbol prior (at this point, equiprobable)
-				phone_seq = sample_from_p_dict(self.phones, l)
-		
+				phone_seq = sample_from_p_dict(self.phones, l + length_boost)
+				if tried_candidates > len(self.frequencies) / len(self.phones):
+					length_boost += 1
+					tried_candidates = 0
+
 			unique_forms.add(phone_seq)
 
-			
+			# make a new word object
 			w = Word(phone_seq, freq, self.frequency_to_p(freq))
 			self.words.append(w)
 
@@ -99,6 +114,7 @@ class Lexicon:
 			for i, group in enumerate(split_by_frequency):
 				for word in group:
 					word.group = i + 1
+
 		# one lexicon is complete, calculate seg info for lexicon
 		self.calc_segmental_info(total_recount = True)
 
@@ -147,6 +163,7 @@ class Lexicon:
 		self.max_si = 0
 		# count size of cohorts
 		if total_recount:
+		# to avoid unneeded computation, keep a running total of cohorts instead of re-counting each time	
 			self.symbol_counts = {}
 			self.cohort_sizes = {}
 			for w in self.words:
@@ -162,7 +179,9 @@ class Lexicon:
 					previous_cohort = self.cohort_sizes[w[:i]]
 				
 				current_cohort = self.cohort_sizes[w[:i+1]]
-				
+				# remove the frequency of the current word from segmental information
+
+				# to avoid division by 0 or log 0 errors, only subtract if word is not alone in cohort
 				if current_cohort == w.frequency:
 					freq_mod = 0
 				else:
@@ -178,6 +197,7 @@ class Lexicon:
 				self.entropy += exp_h(total_p)
 
 	def word_lengths(self, which_group = None):
+		# return lengths of words from the lexicon
 		word_lengths = []
 		if which_group:
 			words_for_lengths = [w for w in self.words if w.group == which_group]
@@ -212,8 +232,13 @@ class Lexicon:
 			for j, seg_info in enumerate(word.si):
 				si_matrix[i,j] = seg_info
 				word_lens[j] += 1
-
-		return np.sum(si_matrix, axis = 0) / word_lens
+		
+		max_word_len = np.argmin(word_lens)
+		# to avoid divide by zero error
+		word_lens[max_word_len:] = 1
+		avg_si = np.sum(si_matrix, axis = 0) / word_lens
+		avg_si[max_word_len:] = np.nan
+		return avg_si
 
 	def positional_entropy(self, position, which_group = None):
 		if which_group:

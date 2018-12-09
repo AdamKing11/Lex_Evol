@@ -150,17 +150,17 @@ class EvolGUI():
 		
 		# zipf!
 		sorted_unig = sorted([w.unigram for w in self.lexicon.words])
-		plot_3 = self.fig3.subplots()
-		plot_3.set_xlim(0, self.lexicon.hard_max_length)
-		plot_3.set_ylim(sorted_unig[0] - 1, sorted_unig[-1] + 1)
-		plot_3.set_title('word length and unigram word information')
+		self.plot_3 = self.fig3.subplots()
+		self.plot_3.set_xlim(0, self.lexicon.hard_max_length)
+		self.plot_3.set_ylim(sorted_unig[0] - 1, sorted_unig[-1] + 1)
+		self.plot_3.set_title('word length and unigram word information')
 
 		lengths, unigrams = zip(*self.lexicon.lengths_and_unigrams())
 		slope, intercept, r_value, p_value, std_err = stats.linregress(lengths, unigrams)
 		unig_pred = intercept + (slope * np.arange(self.lexicon.hard_max_length))
 
-		self.zipf_scatter,  = plot_3.plot(lengths, unigrams, 'o')
-		self.zipf_line, = plot_3.plot(np.arange(self.lexicon.hard_max_length), unig_pred)
+		self.zipf_scatter,  = self.plot_3.plot(lengths, unigrams, 'o')
+		self.zipf_line, = self.plot_3.plot(np.arange(self.lexicon.hard_max_length), unig_pred)
 
 		# phoneme distribution
 		self.plot_4 = self.fig4.subplots(2)
@@ -215,6 +215,8 @@ class EvolGUI():
 		slope, intercept, r_value, p_value, std_err = stats.linregress(lengths, unigrams)
 		unig_pred = intercept + (slope * np.arange(self.lexicon.hard_max_length))
 
+		sorted_unig = sorted([w.unigram for w in self.lexicon.words])
+		self.plot_3.set_ylim(sorted_unig[0] - 1, sorted_unig[-1] + 1)
 		self.zipf_scatter.set_xdata(lengths)
 		self.zipf_line.set_ydata(unig_pred)
 		self.canvas3.draw()
@@ -244,11 +246,12 @@ class EvolGUI():
 	
 	def step(self, n_steps = 1):
 		for i in range(n_steps):
+			self.evolution_steps.set(self.evolution_steps.get() + 1)
 			self.lexicon.change_segs(word_E = self.word_E(), symbol_E = self.symbol_E(), merger_p = self.merger_p())
-			print('step {0} - lexicon entropy: {1}'.format(i + 1, self.lexicon.entropy))
+			print('step: {0} - total steps: {1}'.format(i + 1, self.evolution_steps))
 			if i % 4 == 0:
 				self.update()
-			self.evolution_steps.set(self.evolution_steps.get() + 1)				
+							
 		self.update()
 		
 	def reset_lex(self):
@@ -256,6 +259,21 @@ class EvolGUI():
 		self.lexicon = Lexicon(self.lexicon_size(), phones = self.n_symbols(), 
 			frequency_groups = self.lexicon.frequency_groups,
 			hard_max_length = self.lexicon.hard_max_length, hard_start_length = self.hard_word_length()) 
+
+		# zipf
+		self.plot_3.cla()
+		sorted_unig = sorted([w.unigram for w in self.lexicon.words])
+		self.plot_3.set_xlim(0, self.lexicon.hard_max_length)
+		self.plot_3.set_ylim(sorted_unig[0] - 1, sorted_unig[-1] + 1)
+		self.plot_3.set_title('word length and unigram word information')
+
+		lengths, unigrams = zip(*self.lexicon.lengths_and_unigrams())
+		slope, intercept, r_value, p_value, std_err = stats.linregress(lengths, unigrams)
+		unig_pred = intercept + (slope * np.arange(self.lexicon.hard_max_length))
+
+		self.zipf_scatter,  = self.plot_3.plot(lengths, unigrams, 'o')
+		self.zipf_line, = self.plot_3.plot(np.arange(self.lexicon.hard_max_length), unig_pred)
+
 		self.update()
 
 	def merger_p(self):

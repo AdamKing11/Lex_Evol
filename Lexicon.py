@@ -168,15 +168,9 @@ class Lexicon:
 				else:
 					freq_mod = w.frequency
 
-				#seg_p = (current_cohort - freq_mod) / (previous_cohort - freq_mod)
-				seg_p = current_cohort / previous_cohort
+				seg_p = (current_cohort - freq_mod) / (previous_cohort - freq_mod)
 				seg_h = -log2(seg_p)
-				if not (current_cohort <= previous_cohort):
-					print('---', w, '---', i, c, current_cohort / previous_cohort)
-					for j, d in enumerate(w):
-						print(self.cohort_sizes[w[:j+1]])
-					sys.exit()
-
+				
 				w.si[i] = seg_h
 				self.max_si = max(self.max_si, seg_h)
 
@@ -218,6 +212,7 @@ class Lexicon:
 			for j, seg_info in enumerate(word.si):
 				si_matrix[i,j] = seg_info
 				word_lens[j] += 1
+
 		return np.sum(si_matrix, axis = 0) / word_lens
 
 	def positional_entropy(self, position, which_group = None):
@@ -243,7 +238,6 @@ class Lexicon:
 			firsts.append(f)
 			lasts.append(l)
 
-
 		return firsts, lasts
 
 	def add_prefix_to_word(self, word):
@@ -256,8 +250,11 @@ class Lexicon:
 			if len(similar_freq_words) > 0:
 				short_enough_words = similar_freq_words
 				break
+
 		# if we have a list of candidates, choose from the shortest of them
 		if len(short_enough_words) > 0:
+			shortest_enough_word = min([len(w) for w in short_enough_words])
+			short_enough_words = [w for w in short_enough_words if len(w) == shortest_enough_word]
 			prefix = random.choice(short_enough_words).word
 		# otherwise, just add a random symbol
 		else:
@@ -300,11 +297,14 @@ class Lexicon:
 					R = np.random.rand()
 					alter_seg = R > max(min(.99, (h ** seg_E) / max_si2),.05) 
 					
-					if alter_seg:
+					if alter_seg and not made_change:
 						# remove the old word from the count of cohorts
-						self.delete_word_from_cohorts(word)
-						unique_forms.remove(word.word)
-				
+						# TO-DO - error with words sometimes not appearing in unique_words when they should
+						# figure out how to not need this
+						if word.word in unique_forms:
+							unique_forms.remove(word.word)
+							self.delete_word_from_cohorts(word)
+					
 						merger = np.random.rand() < merger_p
 						if merger:
 							made_change = True
@@ -320,21 +320,26 @@ class Lexicon:
 								word.rebuild_word(new_word)
 						self.add_word_to_cohorts(word)
 						unique_forms.add(word.word)
-						# only do one segment per word
+					
+					# only do one segment per word
+					if made_change:
 						break
 					
 				# if the new word is something already in the lexicon
-				if made_change and word.word in unique_forms:
+				if made_change:
 					# find the (now) homophones
 					homophones = sorted([w for w in self.words if w.word == word.word], key = lambda w : w.frequency)
 					# take the one with lowest frequency and make it longer
-
-					self.delete_word_from_cohorts(homophones[0])
-					unique_forms.remove(homophones[0].word)
-					self.add_prefix_to_word(homophones[0])
-					self.add_word_to_cohorts(homophones[0])
-					unique_forms.add(homophones[0].word)
-					self.calc_segmental_info()						
+					if len(homophones) > 1:
+						# remove low frequency homophone
+						unique_forms.remove(homophones[0].word)
+						self.delete_word_from_cohorts(homophones[0])
+						# increase its length
+						self.add_prefix_to_word(homophones[0])
+						# add to cohorts
+						self.add_word_to_cohorts(homophones[0])
+						unique_forms.add(homophones[0].word)
+						#self.calc_segmental_info()						
 
 		self.seg_ps = dict_to_p_dist(self.symbol_counts, E = symbol_E)
 		self.calc_segmental_info()

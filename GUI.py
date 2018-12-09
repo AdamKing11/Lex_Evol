@@ -28,36 +28,40 @@ except:
 
 from Lexicon import *
 
-_colors = ['blue', 'orange', 'green', 'purple', 'black', 'yellow']
+_colors = ['blue', 'orange', 'green', 'purple', 'black', 'red']
 
 class EvolGUI():
 	def __init__(self, lexicon):
 		self.lexicon = lexicon
 
 		self.root = tk.Tk()
-		self.root.title("Bear down")
-		self.root['width'] = 600
-		self.root['height'] = 600
-
+		self.root.title("Segmental Information by position")
 		self.fig = Figure()
 		self.canvas = FigureCanvasTkAgg(self.fig, master=self.root)
 		self.canvas.get_tk_widget().grid(row=0, column=0)
 
+		self.root2 = tk.Tk()
+		self.root2.title("Word Length Distribution")
 		self.fig2 = Figure()
-		self.canvas2 = FigureCanvasTkAgg(self.fig2, master=self.root)
+		self.canvas2 = FigureCanvasTkAgg(self.fig2, master=self.root2)
 		self.canvas2.get_tk_widget().grid(row=0, column=2)
 
+		self.root3 = tk.Tk()
+		self.root3.title("Word Length and -log Word Probability")
 		self.fig3 = Figure()
-		self.canvas3 = FigureCanvasTkAgg(self.fig3, master=self.root)
+		self.canvas3 = FigureCanvasTkAgg(self.fig3, master=self.root3)
 		self.canvas3.get_tk_widget().grid(row=1, column=0)
 
+		self.root4 = tk.Tk()
+		self.root4.title("Lexical Phoneme distribution")
 		self.fig4 = Figure()
-		self.canvas4 = FigureCanvasTkAgg(self.fig4, master=self.root)
+		self.canvas4 = FigureCanvasTkAgg(self.fig4, master=self.root4)
 		self.canvas4.get_tk_widget().grid(row=1, column=2)
 
-		
-		button_frame = tk.Frame(self.root)
-		button_frame.grid(row=0, column=1)
+		self.interaction_root = tk.Tk()
+		self.interaction_root.title("Bear down")
+		button_frame = tk.Frame(self.interaction_root)
+		button_frame.grid(row=0, column=0)
 
 		self.evolution_steps = tk.IntVar(0)
 		tk.Label(button_frame, text = 'evolution steps:').grid(row=0, column=0)
@@ -87,8 +91,8 @@ class EvolGUI():
 		tk.Button(button_frame,text="Reset Lexicon",command=self.reset_lex).grid(row=6, column=0)
 		tk.Button(button_frame,text="Quit",command=sys.exit).grid(row=6, column=1)
 
-		slider_frame = tk.Frame(self.root)
-		slider_frame.grid(row=1, column=1)
+		slider_frame = tk.Frame(self.interaction_root)
+		slider_frame.grid(row=0, column=1)
 		self.merger_p_slider = tk.Scale(slider_frame, from_=0, to=100, orient = HORIZONTAL, label = 'merger prob.')
 		self.merger_p_slider.grid(row=0, column=1)
 		self.merger_p_slider.set(50)
@@ -129,7 +133,7 @@ class EvolGUI():
 		self.plot_1.set_ylim(-.5, y_lim)
 
 		self.plot_1.legend(handles = self.avg_si_lines)
-		self.plot_1.set_title('avg. seg info')
+		#self.plot_1.set_title('avg. seg info')
 
 		# prep the word length histogram
 		self.plot_2 = self.fig2.subplots()
@@ -137,7 +141,7 @@ class EvolGUI():
 		hist_data = [self.lexicon.word_lengths(i + 1) for i in range(self.lexicon.frequency_groups)]
 		self.wl_hist = self.plot_2.hist(hist_data, range = (1, self.lexicon.hard_max_length), 
 			stacked=False, color = _colors[:self.lexicon.frequency_groups])
-		self.plot_2.set_title('word lengths')
+		#self.plot_2.set_title('word lengths')
 		
 		# zipf!
 		sorted_unig = sorted([w.unigram for w in self.lexicon.words])
@@ -205,7 +209,6 @@ class EvolGUI():
 
 		self.zipf_scatter.set_xdata(lengths)
 		self.zipf_line.set_ydata(unig_pred)
-
 		self.canvas3.draw()
 
 		ks, ps =  p_dist_to_lists(self.lexicon.seg_ps, sort_by_keys = True)

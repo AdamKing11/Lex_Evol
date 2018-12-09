@@ -36,6 +36,8 @@ class EvolGUI():
 
 		self.root = tk.Tk()
 		self.root.title("Bear down")
+		self.root['width'] = 600
+		self.root['height'] = 600
 
 		self.fig = Figure()
 		self.canvas = FigureCanvasTkAgg(self.fig, master=self.root)
@@ -61,34 +63,53 @@ class EvolGUI():
 		tk.Label(button_frame, text = 'evolution steps:').grid(row=0, column=0)
 		tk.Label(button_frame, textvariable = self.evolution_steps).grid(row=0, column=1)
 
-		tk.Label(button_frame, text = 'lexicon size').grid(row=1, column=0)
-		tk.Label(button_frame, text = 'n. symbols').grid(row=1, column=1)
+		tk.Label(button_frame, text = 'starting word length (-1 for Zipfian)').grid(row=1, column=0)
+		self.last_hard_word_length = 7
+		self.hard_word_length_text = tk.Entry(button_frame, width = 4)
+		self.hard_word_length_text.grid(row=1, column=1)
+		self.hard_word_length_text.insert(0, str(self.last_hard_word_length))
+
+		tk.Label(button_frame, text = 'lexicon size').grid(row=2, column=0)
+		tk.Label(button_frame, text = 'n. symbols').grid(row=2, column=1)
 		self.last_lexicon_size = 1000
 		self.last_n_symbols = 5
 		self.lexicon_size_text = tk.Entry(button_frame, width = 6)
-		self.lexicon_size_text.grid(row=2, column=0)		
+		self.lexicon_size_text.grid(row=3, column=0)		
 		self.lexicon_size_text.insert(0, str(self.last_lexicon_size))
 		self.n_symbols_text = tk.Entry(button_frame, width = 4)
-		self.n_symbols_text.grid(row=2, column=1)		
+		self.n_symbols_text.grid(row=3, column=1)		
 		self.n_symbols_text.insert(0, str(self.last_n_symbols))
 
+		
 		# prepare the buttons
-		tk.Button(button_frame,text="One Step",command=self.step).grid(row=3, column=0)
-		tk.Button(button_frame,text="20 Steps",command=lambda : self.step(20)).grid(row=3, column=1)
-		tk.Button(button_frame,text="Reset Lexicon",command=self.reset_lex).grid(row=4, column=0)
-		tk.Button(button_frame,text="Quit",command=sys.exit).grid(row=4, column=1)
+		tk.Button(button_frame,text="One Step",command=self.step).grid(row=5, column=0)
+		tk.Button(button_frame,text="20 Steps",command=lambda : self.step(20)).grid(row=5, column=1)
+		tk.Button(button_frame,text="Reset Lexicon",command=self.reset_lex).grid(row=6, column=0)
+		tk.Button(button_frame,text="Quit",command=sys.exit).grid(row=6, column=1)
 
 		slider_frame = tk.Frame(self.root)
 		slider_frame.grid(row=1, column=1)
 		self.merger_p_slider = tk.Scale(slider_frame, from_=0, to=100, orient = HORIZONTAL, label = 'merger prob.')
-		self.merger_p_slider.grid(row=0, column=0)
+		self.merger_p_slider.grid(row=0, column=1)
 		self.merger_p_slider.set(50)
 		
-		tk.Label(slider_frame, text = 'phone. dist. E').grid(row=1, column=0)
+		tk.Label(slider_frame, text = 'phone. dist. E').grid(row=1, column=1)
 		self.last_symbol_E = 1.
 		self.symbol_E_text = tk.Entry(slider_frame, width = 4)
-		self.symbol_E_text.grid(row=2, column=0)		
+		self.symbol_E_text.grid(row=2, column=1)		
 		self.symbol_E_text.insert(0, str(self.last_symbol_E))
+
+		tk.Label(slider_frame, text = 'word E').grid(row=1, column=0)
+		self.last_word_E = 1.
+		self.word_E_text = tk.Entry(slider_frame, width = 4)
+		self.word_E_text.grid(row=2, column=0)		
+		self.word_E_text.insert(0, str(self.last_word_E))
+
+		tk.Label(slider_frame, text = 'segment E').grid(row=1, column=2)
+		self.last_segment_E = 1.
+		self.segment_E_text = tk.Entry(slider_frame, width = 4)
+		self.segment_E_text.grid(row=2, column=2)		
+		self.segment_E_text.insert(0, str(self.last_segment_E))		
 
 		# prepare the line graph
 		self.plot_1 = self.fig.subplots()
@@ -209,7 +230,7 @@ class EvolGUI():
 	
 	def step(self, n_steps = 1):
 		for i in range(n_steps):
-			self.lexicon.change_segs(symbol_E = self.symbol_E(), merger_p = self.merger_p())
+			self.lexicon.change_segs(word_E = self.word_E(), symbol_E = self.symbol_E(), merger_p = self.merger_p())
 			print('step {0} - {1}'.format(i + 1, self.lexicon.entropy))
 			if i % 4 == 0:
 				self.update()
@@ -220,7 +241,7 @@ class EvolGUI():
 		self.evolution_steps.set(0)
 		self.lexicon = Lexicon(self.lexicon_size(), phones = self.n_symbols(), 
 			frequency_groups = self.lexicon.frequency_groups,
-			hard_max_length = self.lexicon.hard_max_length, hard_start_length = self.lexicon.hard_start_length) 
+			hard_max_length = self.lexicon.hard_max_length, hard_start_length = self.hard_word_length()) 
 		self.update()
 
 	def merger_p(self):
@@ -233,6 +254,14 @@ class EvolGUI():
 			symbol_E = self.last_symbol_E
 		self.last_symbol_E = symbol_E
 		return symbol_E
+
+	def word_E(self):
+		try:
+			word_E = int(self.word_E_text.get())
+		except:
+			word_E = self.last_word_E
+		self.last_word_E = word_E
+		return word_E
 
 	def lexicon_size(self):
 		try:
@@ -249,3 +278,13 @@ class EvolGUI():
 			n_symbols = self.last_n_symbols
 		self.last_n_symbols = n_symbols
 		return n_symbols
+
+	def hard_word_length(self):
+		try:
+			hard_word_length = int(self.hard_word_length_text.get())
+		except:
+			hard_word_length = self.last_hard_word_length
+		self.last_hard_word_length = hard_word_length
+		if hard_word_length < 0: 
+			hard_word_length = None
+		return hard_word_length

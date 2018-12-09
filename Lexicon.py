@@ -199,6 +199,7 @@ class Lexicon:
 			length_unigram_tuples.append((len(w), w.unigram))
 
 		return length_unigram_tuples
+		
 	def avg_segmental_info(self, which_group = None):
 		if which_group:
 			words_to_avg = [w for w in self.words if w.group == which_group]
@@ -213,22 +214,6 @@ class Lexicon:
 				word_lens[j] += 1
 		return np.sum(si_matrix, axis = 0) / word_lens
 
-	"""
-	def first_last_avg_information(self, which_group = None):
-		if which_group:
-			words_to = [w for w in self.words if w.group == which_group]
-		else:
-			words_to = [w for w in self.words]
-
-		first_seg_infos = []
-		last_seg_infos = []
-
-		for i, word in enumerate(words_to):
-			first_seg_infos.append(word.si[0])
-			last_seg_infos.append(word.si[-1])
-		return np.mean(first_seg_infos), np.mean(last_seg_infos)
-	"""
-	
 	def positional_entropy(self, position, which_group = None):
 		if which_group:
 			words_to = [w for w in self.words if w.group == which_group]

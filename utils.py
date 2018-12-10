@@ -30,9 +30,12 @@ def exp_h(p):
 
 def H(ps):
 	H = 0
-	for p in ps:
-		H += exp_h(p)
-	return H
+	if len(ps) > 0:
+		for p in ps:
+			H += exp_h(p)
+		return H
+	else:
+		return np.nan
 
 def dict_to_p_dist(d, E = 1):
 	sum_vals = sum([v ** E for v in d.values()])

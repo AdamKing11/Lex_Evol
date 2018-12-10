@@ -6,7 +6,7 @@ try:
 except:
 	print('please install `numpy`!')
 	sys.exit()
-
+from pprint import pprint
 
 class Word:
 	# word object, pretty straight forward
@@ -240,7 +240,22 @@ class Lexicon:
 		avg_si[max_word_len:] = np.nan
 		return avg_si
 
-	def positional_entropy(self, position, which_group = None):
+	def positional_entropy(self, which_group = None):
+		if which_group:
+			words_to = [w for w in self.words if w.group == which_group]
+		else:
+			words_to = [w for w in self.words]
+
+		counts = [{} for _ in range(self.hard_max_length)]
+		for i, word in enumerate(words_to):
+			for j, seg in enumerate(word):
+				counts[j][seg] = counts[j].get(seg, 0) + word.frequency
+
+		ps = [dict_to_p_dist(counts_at_position) for counts_at_position in counts]
+		Hs = [H(p.values()) for p in ps]
+		return Hs
+
+	def positional_entropy_at_position(self, position, which_group = None):
 		if which_group:
 			words_to = [w for w in self.words if w.group == which_group]
 		else:
@@ -258,8 +273,8 @@ class Lexicon:
 		firsts, lasts = [], []
 		for i in range(self.frequency_groups):
 			#f, l = self.first_last_avg_information(i + 1)
-			f = self.positional_entropy(0, which_group = i + 1)
-			l = self.positional_entropy(-1, which_group = i + 1)
+			f = self.positional_entropy_at_position(0, which_group = i + 1)
+			l = self.positional_entropy_at_position(-1, which_group = i + 1)
 			firsts.append(f)
 			lasts.append(l)
 
@@ -303,7 +318,8 @@ class Lexicon:
 			# pick random number, N, between 0-1
 			# if N is greater than h**2 / max_h2, remove
 			R = np.random.rand()
-			alter_word = R > max(min(.95, (word.unigram ** word_E) / max_h2),.01)
+			p_change = (word.unigram ** word_E) / max_h2
+			alter_word = R > max(min(.95, p_change),.05)
 			
 			### bonus
 			# only remove 1/5 of segments that pass above
@@ -320,7 +336,8 @@ class Lexicon:
 				random.shuffle(seg_pos_and_h)
 				for j, h in seg_pos_and_h:
 					R = np.random.rand()
-					alter_seg = R > max(min(.99, (h ** seg_E) / max_si2),.05) 
+					p_change = (h ** seg_E) / max_si2
+					alter_seg = R > max(min(.95, p_change),.05) 
 					
 					if alter_seg and not made_change:
 						# remove the old word from the count of cohorts
@@ -368,3 +385,5 @@ class Lexicon:
 
 		self.seg_ps = dict_to_p_dist(self.symbol_counts, E = symbol_E)
 		self.calc_segmental_info()
+		#print(self.positional_entropy(1))
+		#print(self.positional_entropy(2))

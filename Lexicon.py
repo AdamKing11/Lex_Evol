@@ -329,7 +329,7 @@ class Lexicon:
 				made_change = False
 				# choose segment to change
 				max_si2 = max([h ** seg_E for h in word.si])
-
+				
 				# get the segments of the word and their segmental info value
 				# randomly shuffle them and go through them
 				seg_pos_and_h = list(enumerate(word.si))

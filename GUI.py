@@ -37,8 +37,8 @@ class EvolGUI():
 		# open one for each figure and all the buttons/sliders
 		self.root = tk.Tk()
 		self.root.title("Segmental Information by position")
-		self.fig = Figure()
-		self.canvas = FigureCanvasTkAgg(self.fig, master=self.root)
+		self.fig1 = Figure()
+		self.canvas = FigureCanvasTkAgg(self.fig1, master=self.root)
 		self.canvas.get_tk_widget().grid(row=0, column=0)
 
 		self.root2 = tk.Tk()
@@ -109,6 +109,8 @@ class EvolGUI():
 		tk.Button(button_frame,text="20 Steps",command=lambda : self.step(20)).grid(row=5, column=1)
 		tk.Button(button_frame,text="Reset Lexicon",command=self.reset_lex).grid(row=6, column=0)
 		tk.Button(button_frame,text="Quit",command=sys.exit).grid(row=6, column=1)
+		tk.Button(button_frame,text='Save Plots',command=self.save_plots).grid(row=7, column=1)
+		
 
 		slider_frame = tk.Frame(self.interaction_root)
 		slider_frame.grid(row=0, column=1)
@@ -138,8 +140,8 @@ class EvolGUI():
 		self.segment_E_text.insert(0, str(self.last_segment_E))		
 
 		# prepare the line graph
-		self.plot_1 = self.fig.subplots()
-
+		self.plot_1 = self.fig1.subplots()
+		
 		max_si = 0
 		self.avg_si_lines = []
 		if self.lexicon.frequency_groups == 2:
@@ -160,6 +162,9 @@ class EvolGUI():
 		self.plot_1.set_ylim(-.5, y_lim)
 
 		self.plot_1.legend(handles = self.avg_si_lines)
+		self.plot_1.set_xlabel('seg. position')
+		self.plot_1.set_ylabel('mean seg. info.')
+
 		#self.plot_1.set_title('avg. seg info')
 
 		# prep the word length histogram
@@ -168,14 +173,17 @@ class EvolGUI():
 		hist_data = [self.lexicon.word_lengths(i + 1) for i in range(self.lexicon.frequency_groups)]
 		self.wl_hist = self.plot_2.hist(hist_data, range = (1, self.lexicon.hard_max_length), 
 			stacked=False, color = _colors[:self.lexicon.frequency_groups])
-		#self.plot_2.set_title('word lengths')
-		
+		self.plot_2.set_xlabel('word length')
+		self.plot_2.set_ylabel('count')
+
 		# zipf!
 		sorted_unig = sorted([w.unigram for w in self.lexicon.words])
 		self.plot_3 = self.fig3.subplots()
 		self.plot_3.set_xlim(0, self.lexicon.hard_max_length)
 		self.plot_3.set_ylim(sorted_unig[0] - 1, sorted_unig[-1] + 1)
-		self.plot_3.set_title('word length and unigram word information')
+		self.plot_3.set_xlabel('word length')
+		self.plot_3.set_ylabel('-log word prob.')
+		#self.plot_3.set_title('word length and unigram word information')
 
 		lengths, unigrams = zip(*self.lexicon.lengths_and_unigrams())
 		slope, intercept, r_value, p_value, std_err = stats.linregress(lengths, unigrams)
@@ -233,6 +241,13 @@ class EvolGUI():
 		self.plot_5.legend(handles = self.pos_ent_lines)
 		
 		tk.mainloop()
+
+	def save_plots(self):
+		self.fig1.savefig('plts/plt_1_iter_{0}.png'.format(self.evolution_steps))
+		self.fig2.savefig('plts/plt_2_iter_{0}.png'.format(self.evolution_steps))
+		self.fig3.savefig('plts/plt_3_iter_{0}.png'.format(self.evolution_steps))
+		self.fig4.savefig('plts/plt_4_iter_{0}.png'.format(self.evolution_steps))
+		self.fig5.savefig('plts/plt_5_iter_{0}.png'.format(self.evolution_steps))
 
 	def update(self):
 		# put all the updating in try/catch in case someone closes a window	

@@ -1,4 +1,5 @@
 import string, random, sys
+from pprint import pprint
 
 try:
 	import numpy as np
@@ -66,7 +67,7 @@ class EvolGUI():
 		self.canvas5.get_tk_widget().grid(row=0, column=0)
 
 		self.interaction_root = tk.Tk()
-		self.interaction_root.title("Bear down")
+		self.interaction_root.title("Lexical Evolution GUI")
 		button_frame = tk.Frame(self.interaction_root)
 		button_frame.grid(row=0, column=0)
 
@@ -104,40 +105,50 @@ class EvolGUI():
 		self.hard_word_length_text.grid(row=4, column=1)
 		self.hard_word_length_text.insert(0, str(self.last_hard_word_length))
 		
-		# prepare the buttons
-		tk.Button(button_frame,text="One Step",command=self.step).grid(row=5, column=0)
-		tk.Button(button_frame,text="20 Steps",command=lambda : self.step(20)).grid(row=5, column=1)
-		tk.Button(button_frame,text="Reset Lexicon",command=self.reset_lex).grid(row=6, column=0)
-		tk.Button(button_frame,text="Quit",command=sys.exit).grid(row=6, column=1)
-		tk.Button(button_frame,text='Save Plots',command=self.save_plots).grid(row=7, column=1)
-		
-
+				
 		slider_frame = tk.Frame(self.interaction_root)
 		slider_frame.grid(row=0, column=1)
-		self.merger_p_slider = tk.Scale(slider_frame, from_=0, to=100, orient = tk.HORIZONTAL, label = 'merger prob.')
-		self.merger_p_slider.grid(row=0, column=1)
-		self.merger_p_slider.set(50)
+
+		tk.Label(slider_frame, text = 'lexicon name').grid(row=0, column=1)
+		self.last_lex_name = ''
+		self.lex_name_text = tk.Entry(slider_frame, width = 6)
+		self.lex_name_text.grid(row=1, column=1)		
+		self.lex_name_text.insert(0, str(self.last_lex_name))
+
+		self.merger_p_slider = tk.Scale(slider_frame, 
+			from_=0, to=100, orient = tk.HORIZONTAL, label = 'merger prob.')
+		self.merger_p_slider.grid(row=2, column=1)
+		self.merger_p_slider.set(85)
 		
 		# determine skew in distribution for merger
-		tk.Label(slider_frame, text = 'phone. dist. E').grid(row=1, column=1)
-		self.last_symbol_E = 1.
+		tk.Label(slider_frame, text = 'phone. dist. E').grid(row=3, column=1)
+		self.last_symbol_E = 2.
 		self.symbol_E_text = tk.Entry(slider_frame, width = 4)
-		self.symbol_E_text.grid(row=2, column=1)		
+		self.symbol_E_text.grid(row=4, column=1)		
 		self.symbol_E_text.insert(0, str(self.last_symbol_E))
 
 		# skew in distribution for chosing word to undergo merger/deletion
-		tk.Label(slider_frame, text = 'word E').grid(row=1, column=0)
+		tk.Label(slider_frame, text = 'word E').grid(row=3, column=0)
 		self.last_word_E = 1.
 		self.word_E_text = tk.Entry(slider_frame, width = 4)
-		self.word_E_text.grid(row=2, column=0)		
+		self.word_E_text.grid(row=4, column=0)		
 		self.word_E_text.insert(0, str(self.last_word_E))
 
 		# skew in distribution for chosing segment in word which will undergo merger/deletion
-		tk.Label(slider_frame, text = 'segment E').grid(row=1, column=2)
-		self.last_segment_E = 1.
+		tk.Label(slider_frame, text = 'segment E').grid(row=3, column=2)
+		self.last_segment_E = 2.
 		self.segment_E_text = tk.Entry(slider_frame, width = 4)
-		self.segment_E_text.grid(row=2, column=2)		
+		self.segment_E_text.grid(row=4, column=2)		
 		self.segment_E_text.insert(0, str(self.last_segment_E))		
+
+		nb_steps = 1000
+		# prepare the buttons
+		tk.Button(button_frame,text="One Step",command=self.step).grid(row=5, column=0)
+		tk.Button(button_frame,text="{0} Steps".format(nb_steps),command=lambda : self.step(nb_steps)).grid(row=5, column=1)
+		tk.Button(button_frame,text="Reset Lexicon",command=self.reset_lex).grid(row=6, column=0)
+		tk.Button(button_frame,text="Quit",command=sys.exit).grid(row=6, column=1)
+		tk.Button(button_frame,text='Save Lexicon',command=lambda : self.lexicon.save('lex_{0}_{1}.txt'.format(self.lex_name_text.get(), self.evolution_steps))).grid(row=7, column=0)
+		tk.Button(button_frame,text='Save Plots',command=self.save_plots).grid(row=7, column=1)
 
 		# prepare the line graph
 		self.plot_1 = self.fig1.subplots()
@@ -193,6 +204,7 @@ class EvolGUI():
 		self.zipf_line, = self.plot_3.plot(np.arange(self.lexicon.hard_max_length), unig_pred)
 
 		# phoneme distribution
+		"""
 		self.plot_4 = self.fig4.subplots(2)
 		ks, ps =  p_dist_to_lists(self.lexicon.seg_ps, sort_by_keys = True)
 		self.phoneme_dist_bars = self.plot_4[0].bar(np.arange(len(ks)), ps, color = _colors[-3])
@@ -215,9 +227,18 @@ class EvolGUI():
 			self.plot_4[1].set_xticklabels(['group {0}'.format(i + 1) for i in range(self.lexicon.frequency_groups)])
 		self.plot_4[1].set_title('seg. entropy - first/last segment')		
 		self.plot_4[1].legend(labels = ['first', 'last'])
+		"""
 
+		self.plot_4 = self.fig4.subplots()
+		ks, ps =  p_dist_to_lists(self.lexicon.seg_ps, sort_by_keys = True)
+		self.phoneme_dist_bars = self.plot_4.bar(np.arange(len(ks)), ps, color = _colors[-3])
+		self.plot_4.set_ylim(0,.75 if max(ps) < .75 else 1)
+		self.plot_4.set_xticks(np.arange(len(ks)))
+		self.plot_4.set_xticklabels(ks)
+		self.plot_4.set_title('seg. distribution in lexicon')
+
+		# positional entropy
 		self.plot_5 = self.fig5.subplots()
-
 		self.pos_ent_lines = []
 		max_pe = 0
 		# could use this from above but this makes it easier to read...
@@ -295,6 +316,7 @@ class EvolGUI():
 			#print('unable to update plot 3')
 
 		try:
+			"""
 			ks, ps =  p_dist_to_lists(self.lexicon.seg_ps, sort_by_keys = True)
 			self.plot_4[0].cla()
 			self.phoneme_dist_bars = self.plot_4[0].bar(np.arange(len(ks)), ps, color = _colors[-3])
@@ -317,6 +339,16 @@ class EvolGUI():
 			self.plot_4[1].set_title('avg. information - first/last segment')
 			self.plot_4[1].legend(labels = ['first', 'last'])
 			self.canvas4.draw()
+			"""
+			ks, ps =  p_dist_to_lists(self.lexicon.seg_ps, sort_by_keys = True)
+			print(ps)
+			self.plot_4.cla()
+			self.phoneme_dist_bars = self.plot_4.bar(np.arange(len(ks)), ps, color = _colors[-3])
+			self.plot_4.set_ylim(0,.75 if max(ps) < .75 else 1)
+			self.plot_4.set_xticks(np.arange(len(ks)))
+			self.plot_4.set_xticklabels(ks)
+			self.plot_4.set_title('seg. distribution in lexicon')
+			self.canvas4.draw()
 		except:
 			pass
 			#print('unable to update plot 4')
@@ -338,18 +370,28 @@ class EvolGUI():
 			#print('unable to update plot 5')
 
 	def step(self, n_steps = 1):
+		if self.evolution_steps == 0:
+			self.lexicon.save('lex_{0}_{1}.txt'.format(self.lex_name_text.get(), self.evolution_steps))
+			
 		for i in range(n_steps):
 			self.evolution_steps +=  1
 			self.evolution_steps_label['text'] = self.evolution_steps
 			self.lexicon.change_segs(word_E = self.word_E(), symbol_E = self.symbol_E(), merger_p = self.merger_p())
 			print('step: {0} - total steps: {1}'.format(i + 1, self.evolution_steps))
-			if i % 4 == 0:
+			if self.evolution_steps % 25 == 0:
 				self.update()
+				self.lexicon.save('lex_{0}_{1}.txt'.format(self.lex_name_text.get(), self.evolution_steps))
+
+		for i, w in enumerate(self.lexicon.words[:10]):
+			print(i, w, w.frequency)
 							
 		self.update()
-		
+		self.lexicon.save('lex_{0}_{1}.txt'.format(self.lex_name_text.get(), self.evolution_steps))
+
 	def reset_lex(self):
 		self.evolution_steps = 0
+		self.evolution_steps_label['text'] = self.evolution_steps
+
 		self.lexicon = Lexicon(self.lexicon_size(), phones = self.n_symbols(), 
 			frequency_groups = self.lexicon.frequency_groups,
 			hard_max_length = self.lexicon.hard_max_length, hard_start_length = self.hard_word_length()) 

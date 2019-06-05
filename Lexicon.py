@@ -1,4 +1,4 @@
-import string, random, sys
+import string, random, sys, csv, re
 
 from utils import *
 try:
@@ -59,7 +59,6 @@ class Lexicon:
 		self.hard_start_length = hard_start_length
 		self.hard_max_length = hard_max_length
 		self.frequency_groups = frequency_groups
-		
 
 		self.phones = phones
 		# generate a zipfian dist for word frequencies
@@ -70,7 +69,7 @@ class Lexicon:
 		self.frequencies = self.sample_zipf(N)
 		self.total_frequency = np.sum(self.frequencies)
 		# determine unigram word prob
-		p = self.frequencies / np.sum(self.frequencies)
+		p = self.frequencies / self.total_frequency
 		
 		# based off the passed requirement on length, generate word lengths for probability values
 		# note: is passed a numpy vector of probabilities, will return a vector of lengths
@@ -110,10 +109,12 @@ class Lexicon:
 
 		self.words = sorted(self.words, key = lambda w : w.unigram)
 		if frequency_groups > 1:
+
 			split_by_frequency = np.array_split(self.words, frequency_groups)
 			for i, group in enumerate(split_by_frequency):
 				for word in group:
 					word.group = i + 1
+
 
 		# one lexicon is complete, calculate seg info for lexicon
 		self.calc_segmental_info(total_recount = True)
@@ -302,7 +303,7 @@ class Lexicon:
 		
 		word.add_prefix(prefix, self.hard_max_length)
 
-	def change_segs(self, word_E = 1.5, seg_E = 1.5, symbol_E = 1., merger_p = .5):
+	def change_segs(self, word_E = 1., symbol_E = 2., seg_E = .5, merger_p = .5):
 		
 		# where I get creative, a million ways to do this 
 		infos = [w.unigram for w in self.words]
@@ -351,7 +352,13 @@ class Lexicon:
 						if merger:
 							made_change = True
 							n_merged += 1
-							word.sub_char(j, sample_from_p_dict(self.seg_ps, 1))
+							# make sure new merged character is not same
+							# as old one
+							new_char = sample_from_p_dict(self.seg_ps, 1)
+							while new_char == word[j]:
+								new_char = sample_from_p_dict(self.seg_ps, 1)
+							word.sub_char(j, new_char)
+			
 						else:
 							made_change = True
 							n_removed += 1
@@ -385,5 +392,12 @@ class Lexicon:
 
 		self.seg_ps = dict_to_p_dist(self.symbol_counts, E = symbol_E)
 		self.calc_segmental_info()
-		#print(self.positional_entropy(1))
-		#print(self.positional_entropy(2))
+
+	def save(self, f = 'lex.txt'):
+
+		f = re.sub('__', '_', f)
+		with open('lexicons/{0}'.format(f), 'w') as wf:
+			writer = csv.writer(wf, delimiter = '\t')
+			for word in sorted(self.words, key = lambda w : w.frequency, reverse = True):
+				writer.writerow([word, ' '.join(word), word.frequency])
+		print('saving `{0}`...'.format(f))

@@ -55,7 +55,6 @@ class Lexicon:
 	# lexicon object, contains all words and methods for calculating seginfo and removing segments
 	def __init__(self, N, phones = 6, z = 2., hard_start_length = None, hard_max_length = 12, frequency_groups = 1):
 		
-
 		self.hard_start_length = hard_start_length
 		self.hard_max_length = hard_max_length
 		self.frequency_groups = frequency_groups
@@ -135,7 +134,7 @@ class Lexicon:
 		if self.hard_start_length:
 			# set all lengths to single value
 			lengths = np.ones(len(p), dtype = 'int') * self.hard_start_length
-			lengths += np.random.randint(2,size = len(lengths))
+			lengths += np.random.randint(6,size = len(lengths)) - 3
 		else:
 			# set length to be a logarithmic function of the Zipfian distribution
 			lengths = np.array(np.minimum(np.floor(-np.log(p)) + 1, self.hard_max_length), dtype = 'int')

@@ -1,0 +1,1000 @@
+hi	h i	1791
+g	g	1275
+hghbbbe	h g h b b b e	780
+hbhi	h b h i	254
+hhh	h h h	220
+hei	h e i	189
+hb	h b	183
+i	i	75
+hg	h g	71
+biih	b i i h	68
+giidhh	g i i d h h	67
+hh	h h	56
+bhib	b h i b	55
+abdi	a b d i	55
+ihb	i h b	53
+hd	h d	37
+hhib	h h i b	35
+hhi	h h i	35
+ih	i h	33
+egg	e g g	28
+ihhhh	i h h h h	26
+ee	e e	25
+hhhh	h h h h	25
+he	h e	25
+e	e	25
+hgi	h g i	24
+aeh	a e h	23
+hbh	h b h	23
+bei	b e i	22
+aib	a i b	22
+hehhg	h e h h g	22
+je	j e	22
+eii	e i i	22
+hif	h i f	21
+ehi	e h i	20
+beii	b e i i	20
+bii	b i i	19
+hhg	h h g	19
+bih	b i h	19
+aie	a i e	18
+hhif	h h i f	17
+b	b	17
+hihi	h i h i	17
+hhbh	h h b h	17
+ehhh	e h h h	16
+iieh	i i e h	16
+bhbh	b h b h	15
+ehd	e h d	15
+hehb	h e h b	15
+aheb	a h e b	15
+eegg	e e g g	15
+hbii	h b i i	14
+bib	b i b	14
+hgb	h g b	14
+ehb	e h b	14
+eahb	e a h b	13
+hghii	h g h i i	13
+hihc	h i h c	13
+hehi	h e h i	13
+gbhhi	g b h h i	12
+bb	b b	12
+bhih	b h i h	12
+bhg	b h g	11
+ghgigi	g h g i g i	11
+hce	h c e	11
+ihhg	i h h g	11
+hbb	h b b	11
+jf	j f	11
+hj	h j	10
+gc	g c	10
+jgbbh	j g b b h	10
+hgg	h g g	10
+hhbb	h h b b	10
+hch	h c h	9
+jbbg	j b b g	9
+abg	a b g	9
+ihihh	i h i h h	9
+di	d i	9
+haib	h a i b	9
+aag	a a g	8
+hiag	h i a g	8
+iah	i a h	8
+bji	b j i	8
+jb	j b	8
+hjh	h j h	8
+jii	j i i	8
+aj	a j	7
+jiahhh	j i a h h h	7
+ahch	a h c h	7
+abh	a b h	7
+jigh	j i g h	7
+jhbb	j h b b	7
+jhi	j h i	7
+jhhb	j h h b	7
+hahhi	h a h h i	7
+hgh	h g h	7
+afi	a f i	6
+hai	h a i	6
+hhf	h h f	6
+bbhb	b b h b	6
+ebhhi	e b h h i	6
+jbg	j b g	6
+hjj	h j j	6
+hjb	h j b	6
+jjhih	j j h i h	6
+hbj	h b j	6
+jfi	j f i	6
+jbj	j b j	6
+aii	a i i	6
+jiig	j i i g	5
+jihh	j i h h	5
+af	a f	5
+jhgh	j h g h	5
+bjhh	b j h h	5
+highb	h i g h b	5
+jjih	j j i h	5
+haii	h a i i	5
+igbhh	i g b h h	5
+hhhi	h h h i	5
+jg	j g	5
+ab	a b	5
+cejhh	c e j h h	5
+iiie	i i i e	5
+hhih	h h i h	5
+j	j	5
+jjbb	j j b b	5
+hbhbhhh	h b h b h h h	5
+hcii	h c i i	5
+hhj	h h j	4
+jbh	j b h	4
+cehgb	c e h g b	4
+jjhii	j j h i i	4
+hhgh	h h g h	4
+iab	i a b	4
+hbbab	h b b a b	4
+heh	h e h	4
+ahii	a h i i	4
+abbhii	a b b h i i	4
+jbbhb	j b b h b	4
+hghahb	h g h a h b	4
+jhab	j h a b	4
+hbhib	h b h i b	4
+hjai	h j a i	4
+dhhhib	d h h h i b	4
+jjhhb	j j h h b	4
+abbih	a b b i h	4
+biigi	b i i g i	4
+jih	j i h	4
+ibhc	i b h c	4
+hhhfgi	h h h f g i	4
+bihhih	b i h h i h	4
+hfhe	h f h e	4
+hhgf	h h g f	4
+jjhi	j j h i	4
+hbhgi	h b h g i	4
+bhhg	b h h g	4
+gjag	g j a g	4
+jgi	j g i	4
+jib	j i b	4
+hhdg	h h d g	4
+hjg	h j g	4
+jfhgi	j f h g i	4
+bihg	b i h g	4
+jhii	j h i i	4
+ifdhi	i f d h i	3
+gfagi	g f a g i	3
+hihhi	h i h h i	3
+dfgg	d f g g	3
+jjhii	j j h i i	3
+jjbi	j j b i	3
+dch	d c h	3
+hheh	h h e h	3
+hgai	h g a i	3
+jjjih	j j j i h	3
+agib	a g i b	3
+hcah	h c a h	3
+hcab	h c a b	3
+dgd	d g d	3
+hahfh	h a h f h	3
+hahe	h a h e	3
+jbi	j b i	3
+jbjb	j b j b	3
+hghf	h g h f	3
+ce	c e	3
+ccg	c c g	3
+jabi	j a b i	3
+hdhh	h d h h	3
+abibh	a b i b h	3
+hji	h j i	3
+ja	j a	3
+cag	c a g	3
+cihhhi	c i h h h i	3
+cjjg	c j j g	3
+jjhhg	j j h h g	3
+cghg	c g h g	3
+cebi	c e b i	3
+cgi	c g i	3
+dfig	d f i g	3
+hdfb	h d f b	3
+dfb	d f b	3
+dhhh	d h h h	3
+jahb	j a h b	3
+hfeb	h f e b	3
+bi	b i	3
+hfi	h f i	3
+fhjh	f h j h	3
+jhbg	j h b g	3
+jh	j h	3
+df	d f	3
+dadfii	d a d f i i	2
+jiehb	j i e h b	2
+bdfi	b d f i	2
+hgbbb	h g b b b	2
+bdhag	b d h a g	2
+ddhih	d d h i h	2
+hda	h d a	2
+hbba	h b b a	2
+dighb	d i g h b	2
+ahahg	a h a h g	2
+dghib	d g h i b	2
+hihh	h i h h	2
+edi	e d i	2
+gbcbh	g b c b h	2
+higgi	h i g g i	2
+cfhhh	c f h h h	2
+dfabb	d f a b b	2
+cfbh	c f b h	2
+dgjh	d g j h	2
+bhfih	b h f i h	2
+idfbi	i d f b i	2
+bdjb	b d j b	2
+jdg	j d g	2
+bdh	b d h	2
+hjhi	h j h i	2
+hchgb	h c h g b	2
+bhah	b h a h	2
+hiihg	h i i h g	2
+didih	d i d i h	2
+dbfh	d b f h	2
+jahh	j a h h	2
+hgbii	h g b i i	2
+fhd	f h d	2
+jhihh	j h i h h	2
+dibg	d i b g	2
+afihi	a f i h i	2
+aagih	a a g i h	2
+abd	a b d	2
+hgdhh	h g d h h	2
+hici	h i c i	2
+ajdb	a j d b	2
+fbfhhb	f b f h h b	2
+dcdhhb	d c d h h b	2
+habi	h a b i	2
+dihhb	d i h h b	2
+dhjih	d h j i h	2
+diih	d i i h	2
+ajb	a j b	2
+cafii	c a f i i	2
+ajbb	a j b b	2
+dfff	d f f f	2
+cecjh	c e c j h	2
+aifi	a i f i	2
+diffh	d i f f h	2
+faihh	f a i h h	2
+bibhg	b i b h g	2
+hhagh	h h a g h	2
+achhhh	a c h h h h	2
+fabfg	f a b f g	2
+ejfhb	e j f h b	2
+dii	d i i	2
+aibbih	a i b b i h	2
+ghjhg	g h j h g	2
+hjhg	h j h g	2
+fhhbi	f h h b i	2
+afbh	a f b h	2
+die	d i e	2
+haiah	h a i a h	2
+hbeihg	h b e i h g	2
+hjbc	h j b c	2
+haai	h a a i	2
+aca	a c a	2
+daib	d a i b	2
+hcigg	h c i g g	2
+ajhigb	a j h i g b	2
+hhch	h h c h	2
+daahig	d a a h i g	2
+chah	c h a h	2
+iccg	i c c g	2
+bahbi	b a h b i	2
+hghi	h g h i	2
+bdhci	b d h c i	2
+ceahg	c e a h g	2
+jjiii	j j i i i	2
+hdd	h d d	2
+faidhb	f a i d h b	2
+hcbehh	h c b e h h	2
+dhhbg	d h h b g	2
+hahjhi	h a h j h i	2
+caihg	c a i h g	2
+faabh	f a a b h	2
+aahi	a a h i	2
+adgg	a d g g	2
+da	d a	2
+fah	f a h	2
+chbhe	c h b h e	2
+bdhh	b d h h	2
+chii	c h i i	2
+caah	c a a h	2
+hdih	h d i h	2
+dhhgi	d h h g i	2
+dhi	d h i	2
+jaghh	j a g h h	2
+eahg	e a h g	2
+cehg	c e h g	2
+chh	c h h	2
+faeb	f a e b	2
+jjhb	j j h b	2
+fhhi	f h h i	2
+hhbg	h h b g	2
+cfgii	c f g i i	2
+bdjib	b d j i b	2
+jidi	j i d i	2
+chhi	c h h i	2
+hedb	h e d b	2
+hbgh	h b g h	2
+ddci	d d c i	2
+jgeii	j g e i i	2
+dahif	d a h i f	2
+fdbh	f d b h	2
+dcfb	d c f b	2
+aaaibh	a a a i b h	2
+jbcg	j b c g	2
+cdh	c d h	2
+fghg	f g h g	2
+dgibbh	d g i b b h	2
+dchigbb	d c h i g b b	2
+jgbhib	j g b h i b	2
+cjge	c j g e	2
+jdi	j d i	2
+ccjih	c c j i h	2
+hag	h a g	2
+chiih	c h i i h	2
+chf	c h f	2
+edhgh	e d h g h	2
+hjhih	h j h i h	2
+faf	f a f	2
+dgih	d g i h	2
+aabgb	a a b g b	2
+ijh	i j h	2
+dc	d c	2
+ddii	d d i i	2
+hhfh	h h f h	2
+dgibg	d g i b g	2
+jfg	j f g	2
+iif	i i f	2
+jg	j g	2
+agbhh	a g b h h	2
+ahf	a h f	2
+fhdi	f h d i	2
+cifhbf	c i f h b f	2
+jbih	j b i h	2
+accdh	a c c d h	2
+cfih	c f i h	2
+aaeh	a a e h	2
+bdcag	b d c a g	2
+cgf	c g f	2
+cdhb	c d h b	2
+dha	d h a	2
+ac	a c	2
+dgbb	d g b b	2
+hdgi	h d g i	2
+hjei	h j e i	2
+hbhhg	h b h h g	2
+dif	d i f	2
+dchch	d c h c h	2
+bdjbg	b d j b g	2
+cedhi	c e d h i	2
+acfi	a c f i	2
+ceig	c e i g	2
+hhihg	h h i h g	2
+jiihhh	j i i h h h	2
+jieh	j i e h	2
+hiha	h i h a	2
+hhibg	h h i b g	2
+dfahhh	d f a h h h	2
+hghh	h g h h	2
+hddi	h d d i	2
+chib	c h i b	1
+chiei	c h i e i	1
+hgcif	h g c i f	1
+bhbgc	b h b g c	1
+ajaba	a j a b a	1
+hahai	h a h a i	1
+dahhbb	d a h h b b	1
+ahhhjb	a h h h j b	1
+ccfhi	c c f h i	1
+abhd	a b h d	1
+adib	a d i b	1
+dafh	d a f h	1
+aahc	a a h c	1
+jhdd	j h d d	1
+ddbh	d d b h	1
+deihh	d e i h h	1
+hfjgih	h f j g i h	1
+bgiihh	b g i i h h	1
+hjii	h j i i	1
+ajf	a j f	1
+jjhedb	j j h e d b	1
+hjbii	h j b i i	1
+bdhib	b d h i b	1
+bfdhf	b f d h f	1
+icgg	i c g g	1
+jejh	j e j h	1
+ggh	g g h	1
+fahb	f a h b	1
+hdb	h d b	1
+fahgg	f a h g g	1
+adjdi	a d j d i	1
+agdihh	a g d i h h	1
+cccdh	c c c d h	1
+hchbih	h c h b i h	1
+ihhdg	i h h d g	1
+bigh	b i g h	1
+cbgig	c b g i g	1
+dghhhg	d g h h h g	1
+fjgh	f j g h	1
+gfdbh	g f d b h	1
+ejdi	e j d i	1
+aigcb	a i g c b	1
+ajdhj	a j d h j	1
+jhgihe	j h g i h e	1
+deah	d e a h	1
+fabig	f a b i g	1
+hdgig	h d g i g	1
+fhbhg	f h b h g	1
+hgia	h g i a	1
+abc	a b c	1
+eiibgh	e i i b g h	1
+ijah	i j a h	1
+iedig	i e d i g	1
+hfhib	h f h i b	1
+hhiihh	h h i i h h	1
+hfhdgh	h f h d g h	1
+dghi	d g h i	1
+dggf	d g g f	1
+heghi	h e g h i	1
+hiiahh	h i i a h h	1
+ahj	a h j	1
+ejii	e j i i	1
+hddcb	h d d c b	1
+hcfadi	h c f a d i	1
+cihh	c i h h	1
+hchibb	h c h i b b	1
+ccdhj	c c d h j	1
+jhjhig	j h j h i g	1
+chba	c h b a	1
+dbihi	d b i h i	1
+ciffgh	c i f f g h	1
+hifd	h i f d	1
+badbg	b a d b g	1
+figi	f i g i	1
+ghdehi	g h d e h i	1
+biii	b i i i	1
+cchhh	c c h h h	1
+beaggi	b e a g g i	1
+ahji	a h j i	1
+jchh	j c h h	1
+cabg	c a b g	1
+jgii	j g i i	1
+cfhi	c f h i	1
+bibi	b i b i	1
+adch	a d c h	1
+bbbgcb	b b b g c b	1
+digg	d i g g	1
+aihih	a i h i h	1
+hcafeh	h c a f e h	1
+defgb	d e f g b	1
+bdhhhbi	b d h h h b i	1
+fagihi	f a g i h i	1
+jgbhh	j g b h h	1
+bbhhgg	b b h h g g	1
+abici	a b i c i	1
+adihhh	a d i h h h	1
+aihhi	a i h h i	1
+cfbi	c f b i	1
+bedh	b e d h	1
+hjhii	h j h i i	1
+ddbb	d d b b	1
+jhhbih	j h h b i h	1
+afdf	a f d f	1
+dg	d g	1
+ciahgd	c i a h g d	1
+dgehh	d g e h h	1
+hdhg	h d h g	1
+jbfh	j b f h	1
+dee	d e e	1
+gjahiii	g j a h i i i	1
+hddhih	h d d h i h	1
+abhc	a b h c	1
+ccih	c c i h	1
+jibi	j i b i	1
+dhfhh	d h f h h	1
+jjf	j j f	1
+gbgihb	g b g i h b	1
+jfhhh	j f h h h	1
+dhiii	d h i i i	1
+hichh	h i c h h	1
+jigii	j i g i i	1
+agehh	a g e h h	1
+hhah	h h a h	1
+dfjgb	d f j g b	1
+jjcgih	j j c g i h	1
+gidh	g i d h	1
+bifgha	b i f g h a	1
+jeh	j e h	1
+hdahci	h d a h c i	1
+hhigg	h h i g g	1
+hddfih	h d d f i h	1
+bicj	b i c j	1
+dchdh	d c h d h	1
+iidfh	i i d f h	1
+heieij	h e i e i j	1
+hgdbag	h g d b a g	1
+dgdhhh	d g d h h h	1
+bffhh	b f f h h	1
+ach	a c h	1
+ifgh	i f g h	1
+hcddih	h c d d i h	1
+aaag	a a a g	1
+aig	a i g	1
+dfahi	d f a h i	1
+dddg	d d d g	1
+hhiih	h h i i h	1
+bchhi	b c h h i	1
+baddh	b a d d h	1
+ejhdh	e j h d h	1
+dgii	d g i i	1
+ihfhih	i h f h i h	1
+ddhdh	d d h d h	1
+cdia	c d i a	1
+achjhh	a c h j h h	1
+fgegbbb	f g e g b b b	1
+bdheh	b d h e h	1
+dcdhb	d c d h b	1
+ahihhf	a h i h h f	1
+iggdi	i g g d i	1
+dfcigh	d f c i g h	1
+adigh	a d i g h	1
+hhhhii	h h h h i i	1
+fdgb	f d g b	1
+cdhgi	c d h g i	1
+jdigi	j d i g i	1
+hhfih	h h f i h	1
+hddch	h d d c h	1
+ajhe	a j h e	1
+ghdgii	g h d g i i	1
+hchgih	h c h g i h	1
+dai	d a i	1
+aibc	a i b c	1
+jahcb	j a h c b	1
+ahaa	a h a a	1
+hjgg	h j g g	1
+hhjh	h h j h	1
+afhbhh	a f h b h h	1
+acfge	a c f g e	1
+dcai	d c a i	1
+aaggi	a a g g i	1
+hbgbig	h b g b i g	1
+igdihh	i g d i h h	1
+jdib	j d i b	1
+fafhi	f a f h i	1
+hiaii	h i a i i	1
+fieh	f i e h	1
+hddhdgb	h d d h d g b	1
+dbehji	d b e h j i	1
+hgdhf	h g d h f	1
+hbbiii	h b b i i i	1
+jjhhii	j j h h i i	1
+ddif	d d i f	1
+dbg	d b g	1
+hfhhhh	h f h h h h	1
+adchb	a d c h b	1
+ghbbh	g h b b h	1
+dbdgeh	d b d g e h	1
+dgfeii	d g f e i i	1
+fecbhh	f e c b h h	1
+dchhh	d c h h h	1
+gieic	g i e i c	1
+hiid	h i i d	1
+hgif	h g i f	1
+dchh	d c h h	1
+fhhgh	f h h g h	1
+dggih	d g g i h	1
+ajfhgh	a j f h g h	1
+ddgfi	d d g f i	1
+abag	a b a g	1
+hjibjbi	h j i b j b i	1
+ihf	i h f	1
+aggb	a g g b	1
+ciji	c i j i	1
+fcbia	f c b i a	1
+icj	i c j	1
+ajfbii	a j f b i i	1
+dagi	d a g i	1
+fbdhh	f b d h h	1
+egbb	e g b b	1
+ahfggii	a h f g g i i	1
+edhhi	e d h h i	1
+ejghe	e j g h e	1
+hgihd	h g i h d	1
+ceihh	c e i h h	1
+cbijg	c b i j g	1
+jjg	j j g	1
+ahgb	a h g b	1
+hgbg	h g b g	1
+fcdhh	f c d h h	1
+hhhig	h h h i g	1
+hibii	h i b i i	1
+faiih	f a i i h	1
+jgcdhh	j g c d h h	1
+bfih	b f i h	1
+gddbb	g d d b b	1
+jjeihb	j j e i h b	1
+hgejh	h g e j h	1
+hiebh	h i e b h	1
+hdbii	h d b i i	1
+dihb	d i h b	1
+caahh	c a a h h	1
+dhij	d h i j	1
+aabhh	a a b h h	1
+egjhih	e g j h i h	1
+ddhhbh	d d h h b h	1
+idghh	i d g h h	1
+hehhhgi	h e h h h g i	1
+hdii	h d i i	1
+hfiib	h f i i b	1
+aihg	a i h g	1
+jghjg	j g h j g	1
+hchb	h c h b	1
+dhheb	d h h e b	1
+becghb	b e c g h b	1
+jgahi	j g a h i	1
+bici	b i c i	1
+ahhhgi	a h h h g i	1
+jaddih	j a d d i h	1
+agbbii	a g b b i i	1
+hjjhi	h j j h i	1
+ahfi	a h f i	1
+cjib	c j i b	1
+dchah	d c h a h	1
+ffgh	f f g h	1
+dejh	d e j h	1
+hgihb	h g i h b	1
+gdhhh	g d h h h	1
+jjdch	j j d c h	1
+fceh	f c e h	1
+ahbbi	a h b b i	1
+aieh	a i e h	1
+jch	j c h	1
+gjhii	g j h i i	1
+jghh	j g h h	1
+aieib	a i e i b	1
+hhccg	h h c c g	1
+jja	j j a	1
+abhhhb	a b h h h b	1
+dccf	d c c f	1
+ijc	i j c	1
+efhh	e f h h	1
+hhbig	h h b i g	1
+dah	d a h	1
+dihgi	d i h g i	1
+dchfi	d c h f i	1
+deheh	d e h e h	1
+hgcih	h g c i h	1
+dghhbh	d g h h b h	1
+daddch	d a d d c h	1
+fdbhi	f d b h i	1
+acgdi	a c g d i	1
+hdiib	h d i i b	1
+idj	i d j	1
+hcjahh	h c j a h h	1
+diiii	d i i i i	1
+ibfih	i b f i h	1
+cagh	c a g h	1
+dchhei	d c h h e i	1
+icgbih	i c g b i h	1
+cahh	c a h h	1
+bbcgh	b b c g h	1
+cchb	c c h b	1
+aajhb	a a j h b	1
+hdibih	h d i b i h	1
+hchhb	h c h h b	1
+fadi	f a d i	1
+hbchf	h b c h f	1
+jddj	j d d j	1
+gcifi	g c i f i	1
+ehjh	e h j h	1
+dedhhi	d e d h h i	1
+jabii	j a b i i	1
+fajh	f a j h	1
+addbh	a d d b h	1
+jghcdch	j g h c d c h	1
+ahfihb	a h f i h b	1
+cihgh	c i h g h	1
+cbbbg	c b b b g	1
+ejhi	e j h i	1
+fihh	f i h h	1
+hceig	h c e i g	1
+dfhg	d f h g	1
+hjggi	h j g g i	1
+afbhi	a f b h i	1
+ajhbhib	a j h b h i b	1
+hfhhh	h f h h h	1
+fhhb	f h h b	1
+hbai	h b a i	1
+ighie	i g h i e	1
+jaab	j a a b	1
+fcfib	f c f i b	1
+gidhh	g i d h h	1
+abbf	a b b f	1
+fbj	f b j	1
+bdhic	b d h i c	1
+bebeii	b e b e i i	1
+afbjih	a f b j i h	1
+gedbbhi	g e d b b h i	1
+iahgib	i a h g i b	1
+fbg	f b g	1
+hdhdh	h d h d h	1
+djig	d j i g	1
+jai	j a i	1
+heiei	h e i e i	1
+cigh	c i g h	1
+jhhd	j h h d	1
+hghhb	h g h h b	1
+hggh	h g g h	1
+dfbib	d f b i b	1
+jhhdg	j h h d g	1
+ieig	i e i g	1
+fdhb	f d h b	1
+hec	h e c	1
+fahii	f a h i i	1
+cabi	c a b i	1
+cfab	c f a b	1
+cgii	c g i i	1
+figj	f i g j	1
+fhgh	f h g h	1
+jfjh	j f j h	1
+fbd	f b d	1
+hgdi	h g d i	1
+dhh	d h h	1
+ihdh	i h d h	1
+dbia	d b i a	1
+bdghd	b d g h d	1
+jgifa	j g i f a	1
+hde	h d e	1
+jdfei	j d f e i	1
+hbaibg	h b a i b g	1
+fehh	f e h h	1
+jgjbbb	j g j b b b	1
+aahe	a a h e	1
+badff	b a d f f	1
+hbah	h b a h	1
+dchghh	d c h g h h	1
+fjhg	f j h g	1
+dddfbi	d d d f b i	1
+ggdii	g g d i i	1
+jijfhh	j i j f h h	1
+hfdhii	h f d h i i	1
+hdcg	h d c g	1
+cheh	c h e h	1
+hiaa	h i a a	1
+jchiii	j c h i i i	1
+hccgh	h c c g h	1
+dibh	d i b h	1
+dhif	d h i f	1
+jahah	j a h a h	1
+jgjih	j g j i h	1
+ajjhai	a j j h a i	1
+dac	d a c	1
+gegbf	g e g b f	1
+iedhbh	i e d h b h	1
+jjji	j j j i	1
+eji	e j i	1
+feihb	f e i h b	1
+dbbh	d b b h	1
+dcaf	d c a f	1
+jbdg	j b d g	1
+dgaiahh	d g a i a h h	1
+hdbiihg	h d b i i h g	1
+cai	c a i	1
+jhjj	j h j j	1
+dbgbi	d b g b i	1
+jgjf	j g j f	1
+jhjbih	j h j b i h	1
+hhjih	h h j i h	1
+jjb	j j b	1
+gijg	g i j g	1
+chghb	c h g h b	1
+cici	c i c i	1
+hfbii	h f b i i	1
+faa	f a a	1
+hdbe	h d b e	1
+dhb	d h b	1
+cjhcb	c j h c b	1
+ahbg	a h b g	1
+hhfi	h h f i	1
+cii	c i i	1
+hjeh	h j e h	1
+hfggi	h f g g i	1
+cadbif	c a d b i f	1
+ehad	e h a d	1
+ddgi	d d g i	1
+cbi	c b i	1
+dceh	d c e h	1
+hhiii	h h i i i	1
+jihhi	j i h h i	1
+heci	h e c i	1
+hdbah	h d b a h	1
+ddijh	d d i j h	1
+dfdb	d f d b	1
+chhd	c h h d	1
+dech	d e c h	1
+aghg	a g h g	1
+cdiji	c d i j i	1
+hhgig	h h g i g	1
+didii	d i d i i	1
+jhfg	j h f g	1
+chahh	c h a h h	1
+cdgf	c d g f	1
+hedfb	h e d f b	1
+ajjhabh	a j j h a b h	1
+hidig	h i d i g	1
+agigi	a g i g i	1
+ccaah	c c a a h	1
+achch	a c h c h	1
+jggiah	j g g i a h	1
+gfbhb	g f b h b	1
+ccdibgi	c c d i b g i	1
+hdai	h d a i	1
+eejh	e e j h	1
+aehib	a e h i b	1
+hbbg	h b b g	1
+dejhi	d e j h i	1
+cbdgg	c b d g g	1
+bdehhi	b d e h h i	1
+iehg	i e h g	1
+hea	h e a	1
+cdhbih	c d h b i h	1
+hcdch	h c d c h	1
+acci	a c c i	1
+hfafi	h f a f i	1
+dcchh	d c c h h	1
+jaag	j a a g	1
+bbcb	b b c b	1
+ihh	i h h	1
+jaahh	j a a h h	1
+ebgg	e b g g	1
+hhhhh	h h h h h	1
+hfdeii	h f d e i i	1
+haj	h a j	1
+agbi	a g b i	1
+hijih	h i j i h	1
+aihb	a i h b	1
+bd	b d	1
+ajdfgi	a j d f g i	1
+ddgg	d d g g	1
+hcihi	h c i h i	1
+jdhhhi	j d h h h i	1
+fhhg	f h h g	1
+gih	g i h	1
+hfg	h f g	1
+fegih	f e g i h	1
+jhiihf	j h i i h f	1
+dciih	d c i i h	1
+fhbi	f h b i	1
+edfhdh	e d f h d h	1
+dehhih	d e h h i h	1
+bfehb	b f e h b	1
+jgehb	j g e h b	1
+dijh	d i j h	1
+hgib	h g i b	1
+dedi	d e d i	1
+ficih	f i c i h	1
+fbibbg	f b i b b g	1
+hhibi	h h i b i	1
+abhj	a b h j	1
+cjji	c j j i	1
+dhjhbh	d h j h b h	1
+dae	d a e	1
+dhdih	d h d i h	1
+hiihc	h i i h c	1
+jgjbb	j g j b b	1
+cbiih	c b i i h	1
+aighi	a i g h i	1
+ejai	e j a i	1
+cibhii	c i b h i i	1
+jgbhhii	j g b h h i i	1
+hahgi	h a h g i	1
+biaii	b i a i i	1
+dbahh	d b a h h	1
+fahdcbh	f a h d c b h	1
+aifhhg	a i f h h g	1
+ddbib	d d b i b	1
+ddhi	d d h i	1
+ccdhbbi	c c d h b b i	1
+jfhg	j f h g	1
+jiehi	j i e h i	1
+aahh	a a h h	1
+ehhhi	e h h h i	1
+jhigh	j h i g h	1
+chha	c h h a	1
+djbg	d j b g	1
+dhgg	d h g g	1
+hfggd	h f g g d	1
+hbfg	h b f g	1
+bdjhhg	b d j h h g	1
+hfh	h f h	1
+hid	h i d	1
+iha	i h a	1
+gjh	g j h	1
+bjdihh	b j d i h h	1
+dedib	d e d i b	1
+hhghh	h h g h h	1
+ifg	i f g	1
+ihiiii	i h i i i i	1
+dabb	d a b b	1
+edcabgh	e d c a b g h	1
+jaihd	j a i h d	1
+jhij	j h i j	1
+feei	f e e i	1
+bdfbii	b d f b i i	1
+jaj	j a j	1
+hhcfi	h h c f i	1
+jaihhi	j a i h h i	1
+dbgg	d b g g	1
+dced	d c e d	1
+hcgi	h c g i	1
+ddbghhh	d d b g h h h	1
+djji	d j j i	1
+ddf	d d f	1
+bjgi	b j g i	1
+ejcgib	e j c g i b	1
+ihhhii	i h h h i i	1
+cdhih	c d h i h	1
+aif	a i f	1
+dcbiigb	d c b i i g b	1
+cjhi	c j h i	1
+dfh	d f h	1
+jfdb	j f d b	1
+haahg	h a a h g	1
+ibhh	i b h h	1
+afdih	a f d i h	1
+hij	h i j	1
+cchiih	c c h i i h	1
+diai	d i a i	1
+bid	b i d	1
+bbchf	b b c h f	1
+hcch	h c c h	1
+jahi	j a h i	1
+ijjbbg	i j j b b g	1
+fhcggi	f h c g g i	1
+edgfi	e d g f i	1
+gcihi	g c i h i	1
+aidg	a i d g	1
+ajicii	a j i c i i	1
+ceh	c e h	1
+hjhig	h j h i g	1
+fafg	f a f g	1
+ccb	c c b	1
+eidghi	e i d g h i	1
+acihh	a c i h h	1
+ccdhg	c c d h g	1
+bef	b e f	1
+cjh	c j h	1
+dcbb	d c b b	1
+cjfhb	c j f h b	1
+dbdi	d b d i	1
+dcdii	d c d i i	1
+bbihhi	b b i h h i	1
+ehdah	e h d a h	1
+hhbhg	h h b h g	1
+bdhghi	b d h g h i	1
+ahha	a h h a	1
+cccbg	c c c b g	1
+hhheh	h h h e h	1
+gjgbh	g j g b h	1
+hbih	h b i h	1
+hgihib	h g i h i b	1
+acdi	a c d i	1
+gdc	g d c	1
+jdbhjh	j d b h j h	1
+afhi	a f h i	1
+hbfhb	h b f h b	1
+hfbh	h f b h	1
+dcjihi	d c j i h i	1
+hhbbh	h h b b h	1
+edhihi	e d h i h i	1
+dhj	d h j	1
+giiii	g i i i i	1
+hbbag	h b b a g	1

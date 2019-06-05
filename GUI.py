@@ -100,7 +100,7 @@ class EvolGUI():
 		self.possible_forms.grid(row=3, column=1)
 		
 		tk.Label(button_frame, text = 'starting word length (-1 for Zipfian)').grid(row=4, column=0)
-		self.last_hard_word_length = 7
+		self.last_hard_word_length = 6
 		self.hard_word_length_text = tk.Entry(button_frame, width = 4)
 		self.hard_word_length_text.grid(row=4, column=1)
 		self.hard_word_length_text.insert(0, str(self.last_hard_word_length))
@@ -122,7 +122,7 @@ class EvolGUI():
 		
 		# determine skew in distribution for merger
 		tk.Label(slider_frame, text = 'phone. dist. E').grid(row=3, column=1)
-		self.last_symbol_E = 2.
+		self.last_symbol_E = 1.5
 		self.symbol_E_text = tk.Entry(slider_frame, width = 4)
 		self.symbol_E_text.grid(row=4, column=1)		
 		self.symbol_E_text.insert(0, str(self.last_symbol_E))
@@ -136,7 +136,7 @@ class EvolGUI():
 
 		# skew in distribution for chosing segment in word which will undergo merger/deletion
 		tk.Label(slider_frame, text = 'segment E').grid(row=3, column=2)
-		self.last_segment_E = 2.
+		self.last_segment_E = 1.5
 		self.segment_E_text = tk.Entry(slider_frame, width = 4)
 		self.segment_E_text.grid(row=4, column=2)		
 		self.segment_E_text.insert(0, str(self.last_segment_E))		
@@ -341,7 +341,6 @@ class EvolGUI():
 			self.canvas4.draw()
 			"""
 			ks, ps =  p_dist_to_lists(self.lexicon.seg_ps, sort_by_keys = True)
-			print(ps)
 			self.plot_4.cla()
 			self.phoneme_dist_bars = self.plot_4.bar(np.arange(len(ks)), ps, color = _colors[-3])
 			self.plot_4.set_ylim(0,.75 if max(ps) < .75 else 1)
